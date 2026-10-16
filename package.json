@@ -1,0 +1,36 @@
+{
+  "name": "a3powersportsllc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy -- --keep-vars",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload -- --keep-vars",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+  },
+  "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
+    "@opennextjs/cloudflare": "^1.11.0",
+    "next": "^15.5.9",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "resend": "^6.25.0",
+    "stripe": "^23.0.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^15.5.9",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5",
+    "wrangler": "^4.40.0"
+  }
+}

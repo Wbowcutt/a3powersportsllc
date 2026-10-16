@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink-800;
+  }
+}
+
+.speed-lines {
+  background-image: repeating-linear-gradient(
+    -18deg,
+    transparent,
+    transparent 16px,
+    rgba(225, 6, 0, 0.14) 16px,
+    rgba(225, 6, 0, 0.14) 17px
+  );
+}
