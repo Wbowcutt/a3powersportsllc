@@ -15,8 +15,8 @@ export default function About() {
         <div className="mt-8 max-w-2xl space-y-4 text-lg leading-relaxed text-ink-500">
           <p>
             From small jobs and service work to engine work and all upgrades.
-            The shop has a pneumatic tire machine, so tires and rims can be
-            sold and changed.
+            The shop has a pneumatic tire changer for swapping tires and rims,
+            and a manual dirt bike tire changer for dirt bike tires.
           </p>
           <p>For new customers searching for the shop and the trade.</p>
         </div>

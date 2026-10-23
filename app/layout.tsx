@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase,
   title: `${site.legalName} | Powersports Repair`,
   description:
-    "A3 Powersports LLC is a trustworthy powersports repair shop for small jobs, service work, engine work, upgrades, and tires and rims. Call or text Asa at (919) 353-8193.",
+    "A3 Powersports LLC is a trustworthy powersports repair shop for small jobs, service work, engine work, upgrades, tire swaps, and dirt bike tires. Call or text Asa at (919) 353-8193.",
   icons: {
     icon: "/favicon.svg",
   },

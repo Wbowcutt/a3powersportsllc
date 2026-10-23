@@ -19,8 +19,8 @@ export default function Hero() {
           <div className="mt-5 h-1 w-20 bg-racing-500" />
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-500 sm:text-xl">
             A trustworthy shop, willing to fix a machine in a timely manner.
-            Small jobs and service work, engine work, upgrades, and tires and
-            rims changed on a pneumatic tire machine.
+            Small jobs and service work, engine work, upgrades, tire swaps on a
+            pneumatic changer, and dirt bike tires on a manual changer.
           </p>
           <div className="mt-10 flex max-w-md flex-col gap-3">
             <Link

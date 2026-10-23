@@ -94,14 +94,24 @@ export default function ShopGrid() {
         <div className="mt-12 border border-dashed border-ink-300 bg-white px-6 py-16 text-center">
           <p className="font-display text-3xl uppercase text-ink-950">Nothing listed yet</p>
           <p className="mx-auto mt-4 max-w-md text-ink-500">
-            Merchandise will show up here. Call or text {site.contactName} if you need something from the shop.
+            Merchandise will show up here. What {site.contactName} has for sale right now is on Facebook Marketplace.
           </p>
-          <a
-            href={site.phoneHref}
-            className="mt-8 inline-flex bg-ink-950 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-white hover:bg-racing-600"
-          >
-            Call or text {site.phone}
-          </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={site.marketplaceHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex bg-ink-950 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-white hover:bg-racing-600"
+            >
+              See what&apos;s for sale
+            </a>
+            <a
+              href={site.phoneHref}
+              className="inline-flex border border-ink-950 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] text-ink-950 hover:bg-ink-950 hover:text-white"
+            >
+              Call or text {site.phone}
+            </a>
+          </div>
         </div>
       ) : (
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

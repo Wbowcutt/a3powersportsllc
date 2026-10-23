@@ -7,11 +7,12 @@ import { site } from "@/lib/site";
 import { useCart } from "./CartProvider";
 
 const navLinks = [
-  { href: "/#services", label: "Services" },
-  { href: "/#about", label: "About" },
-  { href: "/#book", label: "Book" },
-  { href: "/shop", label: "Shop" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#services", label: "Services", external: false },
+  { href: "/#about", label: "About", external: false },
+  { href: "/#book", label: "Book", external: false },
+  { href: site.marketplaceHref, label: "For sale", external: true },
+  { href: "/shop", label: "Shop", external: false },
+  { href: "/#contact", label: "Contact", external: false },
 ];
 
 export default function Navbar() {
@@ -30,12 +31,23 @@ export default function Navbar() {
           <ul className="hidden items-center gap-7 min-[900px]:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-700 transition hover:text-racing-600"
-                >
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-700 transition hover:text-racing-600"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="text-sm font-semibold uppercase tracking-[0.16em] text-ink-700 transition hover:text-racing-600"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -54,12 +66,12 @@ export default function Navbar() {
                 </span>
               )}
             </button>
-            <a
+            <Link
               href="/#book"
               className="inline-flex bg-ink-950 px-4 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-racing-600"
             >
               Book
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center gap-1 min-[900px]:hidden">
@@ -101,13 +113,25 @@ export default function Navbar() {
             <ul className="flex flex-col px-4 py-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="block px-2 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink-800"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-2 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink-800"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="block px-2 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink-800"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li className="pt-2">

@@ -7,6 +7,8 @@ export const site = {
   phoneHref: "tel:+19193538193",
   smsHref: "sms:+19193538193",
   email: "a3powersportsllc@gmail.com",
+  marketplaceHref:
+    "https://www.facebook.com/marketplace/profile/100001714541378/",
 } as const;
 
 function normalizeCalLink(value: string) {

@@ -27,6 +27,16 @@ export default function Footer() {
               {site.email}
             </a>
           </p>
+          <p className="mt-4">
+            <a
+              href={site.marketplaceHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold uppercase tracking-[0.14em] text-ink-950 hover:text-racing-600"
+            >
+              Facebook Marketplace
+            </a>
+          </p>
         </div>
       </div>
       <div className="border-t border-ink-200 py-6 text-center text-xs uppercase tracking-[0.16em] text-ink-400">

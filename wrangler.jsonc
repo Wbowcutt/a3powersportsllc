@@ -13,5 +13,20 @@
       "binding": "WORKER_SELF_REFERENCE",
       "service": "a3powersportsllc"
     }
-  ]
+  ],
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "a3powersportsllc.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.a3powersportsllc.com",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "CONTACT_EMAIL": "a3powersportsllc@gmail.com",
+    "NEXT_PUBLIC_SITE_URL": "https://a3powersportsllc.com"
+  }
 }

@@ -17,7 +17,7 @@ const services = [
   {
     index: "04",
     title: "Tires & rims",
-    body: "Tires and rims sold and changed on a pneumatic tire machine.",
+    body: "Tires and rims sold and swapped on a pneumatic tire changer. Dirt bike tires changed on a manual dirt bike tire changer.",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function Services() {
         </h2>
         <div className="mt-4 h-1 w-16 bg-racing-500" />
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-500">
-          Service work, engine work, and upgrades — plus tires and rims.
+          Service work, engine work, and upgrades — plus tire swaps and dirt bike tires.
         </p>
 
         <div className="mt-12 border-b border-ink-300">
