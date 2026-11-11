@@ -73,8 +73,10 @@ The live URL goes in `NEXT_PUBLIC_SITE_URL` (no trailing slash). Point the Namec
 
 Same pattern as Total Care Service, using [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare).
 
-Build command: `npx @opennextjs/cloudflare build`  
-Deploy command: `npx @opennextjs/cloudflare deploy -- --keep-vars`
+Build command: `npm run build`  
+Deploy command: `npx opennextjs-cloudflare deploy -- --keep-vars`
+
+`npm run build` runs the OpenNext Cloudflare build. A plain `next build` is not enough for this Worker. The `--dangerouslyUseUnsupportedNextVersion` flag is required while this Next.js major is outside OpenNext’s support window. Prefer the deploy command above over bare `npx wrangler deploy` so existing Worker secrets and vars are kept.
 
 Set runtime variables on the Worker (Settings → Variables and Secrets), not only as build variables:
 
