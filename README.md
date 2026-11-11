@@ -76,7 +76,7 @@ Same pattern as Total Care Service, using [`@opennextjs/cloudflare`](https://ope
 Build command: `npm run build:worker`  
 Deploy command: `npx opennextjs-cloudflare deploy -- --keep-vars`
 
-Do not set the Cloudflare build command to `npm run build`. OpenNext itself calls `npm run build` for the Next.js step, so that script must stay as `next build`. The Workers Builds command should be `npm run build:worker` (OpenNext). The `--dangerouslyUseUnsupportedNextVersion` flag is required while this Next.js major is outside OpenNext’s support window. Prefer the deploy command above over bare `npx wrangler deploy` so existing Worker secrets and vars are kept.
+Do not set the Cloudflare build command to `npm run build`. OpenNext itself calls `npm run build` for the Next.js step, so that script must stay as `next build`. The Workers Builds command should be `npm run build:worker` (OpenNext). Next.js 16.4 is inside OpenNext’s support window. `build:worker` still passes `--dangerouslyUseUnsupportedNextVersion` so the build continues if that check rejects the installed version. Prefer the deploy command above over bare `npx wrangler deploy` so existing Worker secrets and vars are kept.
 
 Set runtime variables on the Worker (Settings → Variables and Secrets), not only as build variables:
 

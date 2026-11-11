@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { formatPrice, shipping } from "@/lib/products";
 import { useCart } from "./CartProvider";
 
@@ -27,26 +27,25 @@ export default function CartDrawer() {
     return () => window.removeEventListener("pageshow", onPageShow);
   }, []);
 
-  useEffect(() => {
-    if (!isOpen) {
-      setStatus("idle");
-      setErrorMessage("");
-    }
-  }, [isOpen]);
+  const requestClose = useCallback(() => {
+    setStatus("idle");
+    setErrorMessage("");
+    closeCart();
+  }, [closeCart]);
 
   useEffect(() => {
     if (!isOpen) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") closeCart();
+      if (event.key === "Escape") requestClose();
     }
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = previous;
       window.removeEventListener("keydown", onKey);
     };
-  }, [isOpen, closeCart]);
+  }, [isOpen, requestClose]);
 
   if (!isOpen) return null;
 
@@ -88,7 +87,7 @@ export default function CartDrawer() {
         type="button"
         className="absolute inset-0 bg-ink-950/60"
         aria-label="Close cart"
-        onClick={closeCart}
+        onClick={requestClose}
       />
       <aside className="absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-2xl">
         <div className="h-1 bg-racing-500" />
@@ -101,7 +100,7 @@ export default function CartDrawer() {
           </div>
           <button
             type="button"
-            onClick={closeCart}
+            onClick={requestClose}
             className="p-2 text-ink-500 hover:text-ink-950"
             aria-label="Close cart"
           >

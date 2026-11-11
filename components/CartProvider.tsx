@@ -82,6 +82,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (raw) {
         const parsed = JSON.parse(raw) as unknown;
         if (Array.isArray(parsed)) {
+          // Saved after mount so the server and client both start from an empty cart.
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setItems(parsed.map(normalizeItem).filter((item): item is CartItem => Boolean(item)));
         }
       }
