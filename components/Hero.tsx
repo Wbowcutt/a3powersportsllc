@@ -9,19 +9,25 @@ export default function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 min-[900px]:grid-cols-[1.15fr_0.85fr] min-[900px]:px-8 min-[900px]:py-24">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-racing-600">
-            {site.legalName}
-          </p>
-          <h1 className="mt-4 font-display text-5xl uppercase leading-[0.92] tracking-tight text-ink-950 sm:text-6xl min-[900px]:text-7xl">
-            Powersports
-            <span className="mt-1 block text-ink-950">repair</span>
+          <h1 className="text-ink-950">
+            <span className="block font-sans text-xs font-semibold uppercase tracking-[0.32em] text-racing-600">
+              {site.legalName}
+            </span>
+            <span className="mt-4 block font-display text-5xl uppercase leading-[0.92] tracking-tight sm:text-6xl min-[900px]:text-7xl">
+              Powersports
+            </span>
+            <span className="mt-1 block font-display text-5xl uppercase leading-[0.92] tracking-tight sm:text-6xl min-[900px]:text-7xl">
+              Repair
+            </span>
           </h1>
           <div className="mt-5 h-1 w-20 bg-racing-500" />
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-500 sm:text-xl">
-            A trustworthy shop, willing to fix a machine in a timely manner.
-            Small jobs and service work, engine work, upgrades, tire swaps on a
-            pneumatic changer, and dirt bike tires on a manual changer.
-          </p>
+          <div className="mt-6 max-w-xl space-y-3 text-lg leading-relaxed text-ink-500 sm:text-xl">
+            <p>
+              A trustworthy shop, willing to fix any off-road machine in a timely
+              manner the right way the first time!
+            </p>
+            <p>Any & all service work, repair work, & tire swaps!</p>
+          </div>
           <div className="mt-10 flex max-w-md flex-col gap-3">
             <Link
               href="/#book"

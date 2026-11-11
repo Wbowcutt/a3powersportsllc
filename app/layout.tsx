@@ -25,14 +25,14 @@ export const metadata: Metadata = {
   metadataBase,
   title: `${site.legalName} | Powersports Repair`,
   description:
-    "A3 Powersports LLC is a trustworthy powersports repair shop for small jobs, service work, engine work, upgrades, tire swaps, and dirt bike tires. Call or text Asa at (919) 353-8193.",
+    "A trustworthy shop, willing to fix any off-road machine in a timely manner the right way the first time. Any & all service work, repair work, & tire swaps. Call or text Asa at (919) 353-8193.",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
     title: `${site.legalName} | Powersports Repair`,
     description:
-      "Small jobs, service work, engine work, upgrades, and tires and rims. Call or text Asa.",
+      "A trustworthy shop, willing to fix any off-road machine in a timely manner the right way the first time. Any & all service work, repair work, & tire swaps.",
     images: ["/logo.png"],
   },
 };
