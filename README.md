@@ -47,23 +47,7 @@ Sales tax is off until there is an active Stripe Tax registration. Do not turn o
 
 ### Adding merchandise
 
-Edit `lib/products.ts`. Example:
-
-```ts
-{
-  id: "tee",
-  name: "Shop tee",
-  description: "Short sleeve shirt.",
-  priceCents: 2500,
-  image: "/shop/tee.png",
-  sizes: [
-    { id: "m", name: "Medium", label: "M" },
-    { id: "l", name: "Large", label: "L" },
-  ],
-}
-```
-
-Put photos in `public/shop/`. Set `shipping.priceCents` in the same file when a flat shipping rate is decided. `0` collects a US address and does not add a fee.
+Edit `lib/products.ts`. The shop already lists a logo tee and logo hoodie with color and size options. Photos live under `public/shop/tee` and `public/shop/hoodie`. Change `priceCents` there when Asa confirms retail pricing. Set `shipping.priceCents` in the same file when a flat shipping rate is decided. `0` collects a US address and does not add a fee.
 
 ## Namecheap domain
 

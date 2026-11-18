@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { site } from "@/lib/site";
 import {
   getProduct,
+  getProductColor,
   getProductSize,
   shipping,
 } from "@/lib/products";
@@ -10,6 +11,7 @@ import { getSiteUrl, getStripe } from "@/lib/stripe";
 type CartPayloadItem = {
   productId?: string;
   sizeId?: string;
+  colorId?: string;
   quantity?: number;
 };
 
@@ -26,6 +28,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Your cart is empty." }, { status: 400 });
     }
 
+    const stripe = getStripe();
+    const siteUrl = getSiteUrl();
     const lineItems = [];
 
     for (const item of rawItems) {
@@ -49,7 +53,21 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      let name = product.name;
+      const details: string[] = [];
+      let imagePath: string | undefined;
+
+      if (product.colors?.length) {
+        const color = getProductColor(productId, item.colorId);
+        if (!color || (item.colorId && color.id !== item.colorId)) {
+          return NextResponse.json(
+            { error: `Pick a color for ${product.name}.` },
+            { status: 400 }
+          );
+        }
+        details.push(color.name);
+        imagePath = color.image;
+      }
+
       if (product.sizes?.length) {
         const size = getProductSize(productId, item.sizeId);
         if (!size || (item.sizeId && size.id !== item.sizeId)) {
@@ -58,8 +76,13 @@ export async function POST(request: NextRequest) {
             { status: 400 }
           );
         }
-        name = `${product.name} (${size.name})`;
+        details.push(size.name);
       }
+
+      const name =
+        details.length > 0
+          ? `${product.name} (${details.join(" / ")})`
+          : product.name;
 
       lineItems.push({
         quantity,
@@ -69,13 +92,11 @@ export async function POST(request: NextRequest) {
           product_data: {
             name,
             description: product.description,
+            ...(imagePath ? { images: [`${siteUrl}${imagePath}`] } : {}),
           },
         },
       });
     }
-
-    const stripe = getStripe();
-    const siteUrl = getSiteUrl();
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

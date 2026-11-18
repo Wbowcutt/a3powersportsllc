@@ -64,6 +64,7 @@ export default function CartDrawer() {
           items: lines.map((line) => ({
             productId: line.productId,
             sizeId: line.sizeId,
+            colorId: line.colorId,
             quantity: line.quantity,
           })),
         }),
@@ -121,7 +122,11 @@ export default function CartDrawer() {
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <p className="font-semibold text-ink-950">{line.product.name}</p>
-                      {line.size && <p className="mt-0.5 text-xs uppercase tracking-wide text-ink-400">{line.size.name}</p>}
+                      {(line.color || line.size) && (
+                        <p className="mt-0.5 text-xs uppercase tracking-wide text-ink-400">
+                          {[line.color?.name, line.size?.name].filter(Boolean).join(" / ")}
+                        </p>
+                      )}
                     </div>
                     <p className="text-sm font-semibold text-ink-950">
                       {formatPrice(line.product.priceCents * line.quantity)}
@@ -138,13 +143,18 @@ export default function CartDrawer() {
                       max={20}
                       value={line.quantity}
                       onChange={(event) =>
-                        setQuantity(line.productId, Number(event.target.value) || 1, line.sizeId)
+                        setQuantity(
+                          line.productId,
+                          Number(event.target.value) || 1,
+                          line.sizeId,
+                          line.colorId
+                        )
                       }
                       className="w-16 border border-ink-300 px-2 py-1 text-sm"
                     />
                     <button
                       type="button"
-                      onClick={() => removeItem(line.productId, line.sizeId)}
+                      onClick={() => removeItem(line.productId, line.sizeId, line.colorId)}
                       className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-400 hover:text-racing-600"
                     >
                       Remove
